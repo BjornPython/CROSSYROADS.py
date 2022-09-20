@@ -21,14 +21,14 @@ game = True
 while game:
     screen.update()
     time.sleep(0.1)
-    car.make_car()
-    car.move_cars()
+    car.make_car()  # Makes the cars randomly
+    car.move_cars()  # Moves the cars
 
-    if char.ycor() >= 270:
-        char.reset_pos()
-        score.add_score()
+    if char.check_pos():  # Checks if the character's position is enough to score.
+        score.add_score()  # adds 1 to the score
+        car.increase_diff()  # Increases the speed of the cars.
 
-    for c in car.all_cars:
+    for c in car.all_cars:  # Checks the distance of the character compared to all the cars.
         if char.distance(c) < 20:
             score.game_over()
             game = False
