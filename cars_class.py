@@ -22,8 +22,12 @@ class Cars:
 
     def move_cars(self):
         """Moves the cars in self.all_cars from right to left"""
-        for car in self.all_cars:
-            car.backward(self.car_speed)
+        deleted = 0
+        for car in range(len(self.all_cars)):
+            if self.all_cars[car-deleted].xcor() > -320:
+                self.all_cars[car-deleted].backward(self.car_speed)
+
+
 
     def collision(self, char):
         """Returns True if the character gets hit by the car"""
